@@ -1,0 +1,21 @@
+.top-menu {
+  width: 100%;
+  height: 125px;
+}
+
+.logo {
+  width:72px;
+}
+
+.menu-separator {
+  height:40px;
+}
+
+.social-icons {
+  width: 15px;
+  height:15px;
+}
+
+.my-nav {
+  background-color: #fff;
+}
