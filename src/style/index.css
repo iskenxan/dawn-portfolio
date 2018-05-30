@@ -1,10 +1,13 @@
-.top-menu {
-  width: 100%;
-  height: 125px;
+.navbar {
+  background:rgba(255, 255, 255, 0.95);
+}
+
+.content-container {
+  margin-top: 80px;
 }
 
 .logo {
-  width:72px;
+  width:65px;
 }
 
 .menu-separator {
@@ -16,6 +19,29 @@
   height:15px;
 }
 
-.my-nav {
-  background-color: #fff;
+.card-img-overlay {
+  background-color:rgba(14, 14, 14, 0.75);
+  opacity: 0;
+  cursor:pointer;
+  transition: opacity 0.2s ease-out;
+}
+
+.card-img-overlay:hover {
+  opacity: 1;
+}
+
+.footer {
+  position: relative;
+  margin-top: 50px;
+  background-color: #212121;
+  color: #ffffff;
+  height:120px;
+}
+
+.footer .row {
+  height: 100%;
+}
+
+.headroom-wrapper {
+  height: 56px !important;
 }
