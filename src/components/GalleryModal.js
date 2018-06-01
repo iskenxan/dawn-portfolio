@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Modal, ModalBody, ModalHeader, ModalFooter, Button } from 'reactstrap';
+import { Container, Modal, ModalBody } from 'reactstrap';
 import GalleryCarousel from './GalleryCarousel';
 
 class GalleryModal extends Component {
@@ -8,10 +8,9 @@ class GalleryModal extends Component {
     return(
       <button
         className="close"
-        style={{ position: 'absolute', top: '25px', right: '25px', color: '#fff' }}
+        style={{ position: 'absolute', top: '25px', right: '25px' }}
         onClick={this.props.toggle}>&times;</button>
       );
-
   }
 
 

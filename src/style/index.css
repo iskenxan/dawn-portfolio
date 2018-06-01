@@ -15,8 +15,36 @@
 }
 
 .social-icons {
-  width: 15px;
-  height:15px;
+  height:18px;
+  background-size:cover;
+  transition: background-image 0.2s ease-out;
+}
+
+.icon-facebook {
+  width: 10px;
+  background-image:url("../media/facebook-icon.svg");
+}
+
+.icon-facebook:hover {
+  background-image:url("../media/facebook-icon-hover.svg");
+}
+
+.icon-insta {
+  width: 17px;
+  background-image:url("../media/instagram-icon.svg");
+}
+
+.icon-insta:hover {
+  background-image:url("../media/instagram-icon-hover.svg");
+}
+
+.icon-tumblr {
+  width: 11px;
+  background-image:url("../media/tumblr-icon.svg");
+}
+
+.icon-tumblr:hover {
+  background-image:url("../media/tumblr-icon-hover.svg");
 }
 
 .card-img-overlay {
@@ -44,4 +72,17 @@
 
 .headroom-wrapper {
   height: 56px !important;
+}
+
+.modal-backdrop {
+    opacity:1 !important;
+    background-color: #fff !important;
+}
+
+.abcRioButton {
+  width:100% !important;
+}
+
+.screen-height {
+  height:100vh;
 }

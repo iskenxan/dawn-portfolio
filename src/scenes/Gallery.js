@@ -22,20 +22,29 @@
      return required.keys().map(required);
    }
 
+   getOverlay = () => {
+     if( window.innerWidth > 576){
+       return (
+         <CardImgOverlay onClick={this.toggleModal}>
+           <CardTitle>Card Title</CardTitle>
+           <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
+           <CardText>
+             <small className="text-muted">Last updated 3 mins ago</small>
+           </CardText>
+         </CardImgOverlay>
+       );
+    }
+   }
+
+
    getColumns = () => {
      const images = this.getImages();
 
      return images.map(image => {
        return(
-         <Card inverse className="col-sm-4 p-0 rounded-0 border-1 border-white">
+         <Card key={image} inverse className="col-sm-4 p-0 rounded-0 border-1 border-white">
            <CardImg className="rounded-0" width="100%"  src={image} />
-           <CardImgOverlay onClick={this.toggleModal}>
-             <CardTitle>Card Title</CardTitle>
-             <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
-             <CardText>
-               <small className="text-muted">Last updated 3 mins ago</small>
-             </CardText>
-           </CardImgOverlay>
+           {this.getOverlay()}
          </Card>
        );
      });
