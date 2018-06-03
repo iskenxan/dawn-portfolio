@@ -7,7 +7,6 @@ import Admin from './scenes/Admin';
 import PrivateRoute from './components/PrivateRoute'
 import Login from './scenes/Login'
 import Error from './scenes/Error';
-import Test from './scenes/Test';
 
 
 export const galleryRoutes = {
@@ -46,7 +45,6 @@ export default function(props) {
           <Route path={routes.about.path} component={About} />
           <Route path="/login" component={Login} />
           <Route path="/error" component={Error} />
-          <Route path="/test" component={Test} />
           <PrivateRoute path="/admin" renderComponent={Admin} {...props} />
           <Route path="/" component={Gallery} />
         </Switch>

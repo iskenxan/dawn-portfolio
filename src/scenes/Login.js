@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { Container,CardTitle, Row, Col } from 'reactstrap';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
 import { logIn, logOut } from '../actions/ActionSession';
 import * as Google from '../components/Google';
 
 
 class Login extends Component {
-  
+
   componentDidMount() {
     Google.loadGoogleScript();
   }

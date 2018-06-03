@@ -1,0 +1,37 @@
+{
+  "studio": {
+    "tags": ["portraits", "front-page"],
+    "files": ["1.jpg"],
+    "front":"1.jpg"
+  },
+  "pacsun": {
+    "tags": ["fashion","advertising","front-page"],
+    "files": ["2.jpg"],
+    "front":"2.jpg"
+  },
+  "tyler": {
+    "tags": ["portraits"],
+    "files": ["3.jpg"],
+    "front":"3.jpg"
+  },
+  "e - commerce": {
+    "tags": ["fashion","front-page"],
+    "files": ["4.jpg"],
+    "front":"4.jpg"
+  },
+  "Iba": {
+    "tags": ["fashion","portraits"],
+    "files": ["5.jpg"],
+    "front":"5.jpg"
+  },
+  "Dorothy": {
+    "tags": ["fashion","front-page"],
+    "files": ["6.jpg","7.jpg","8.jpg"],
+    "front":"7.jpg"
+  },
+  "excite": {
+    "tags": ["advertising","front-page"],
+    "files": ["9.jpg"],
+    "front":"9.jpg"
+  }
+}

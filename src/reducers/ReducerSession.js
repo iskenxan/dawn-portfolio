@@ -2,7 +2,7 @@
 import { LOG_IN } from '../actions/ActionSession';
 import { LOG_OUT } from '../actions/ActionSession';
 
-export default function( state = { loggedIn: false }, action) {
+export default function( state = { loggedIn: true }, action) {
   switch (action.type) {
     case LOG_IN: {
       return { loggedIn: true };
