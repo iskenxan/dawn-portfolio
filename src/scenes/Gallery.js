@@ -4,6 +4,10 @@
  import { Container, Card, CardImg, CardImgOverlay, CardText, CardTitle } from 'reactstrap';
  import GalleryModal from '../components/GalleryModal';
  import Masonry from 'react-masonry-component';
+ import { connect } from 'react-redux';
+ import { fetchPosts } from '../actions/ActionTumblr';
+ import { getTag } from '../utils/Util';
+
 
  const masonryOptions = {
    percentPosition: true
@@ -14,66 +18,85 @@
      super(props);
      this.state = {
        isModalOpen: false,
+       modalPost: null
      };
    }
 
-   getImages = () => {
-     const required = require.context('../media/photos', false, /\.jpe?g$/);
-     return required.keys().map(required);
+   componentDidMount() {
    }
 
-   getOverlay = () => {
-     if( window.innerWidth > 576){
-       return (
-         <CardImgOverlay onClick={this.toggleModal}>
-           <CardTitle>Card Title</CardTitle>
-           <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
-           <CardText>
-             <small className="text-muted">Last updated 3 mins ago</small>
-           </CardText>
-         </CardImgOverlay>
-       );
-    }
+   loadPosts = () => {
+     const tag = this.getCurrentTag(tag);
+     const currentPosts = this.props.posts[tag];
+     if (currentPosts.length <= 0 && !this.props.loading[tag]){
+       this.props.fetchPosts(tag);
+     }
+
+     return currentPosts;
+   }
+
+
+   getCurrentTag = () => {
+     const { pathname } = this.props.location;
+     const tag = getTag(pathname);
+
+     return tag;
    }
 
 
    getColumns = () => {
-     const images = this.getImages();
-
-     return images.map(image => {
+     console.log(this.props.posts)
+     const posts = this.loadPosts();
+     return posts.map(post => {
+       const image = post.photos[0].original_size.url;
        return(
          <Card key={image} inverse className="col-sm-4 p-0 rounded-0 border-1 border-white">
            <CardImg className="rounded-0" width="100%"  src={image} />
-           {this.getOverlay()}
+           {this.getOverlay(post)}
          </Card>
        );
      });
    }
 
-   toggleModal = () => {
-     console.log('clicked')
-     this.setState({isModalOpen: !this.state.isModalOpen})
+   getOverlay = (post) => {
+       return (
+         <CardImgOverlay className="d-flex" onClick={() => this.toggleModal(post)}>
+           <CardText className="m-auto">{post.summary}</CardText>
+         </CardImgOverlay>
+       );
+    }
+
+   toggleModal = (post) => {
+     this.setState({isModalOpen: !this.state.isModalOpen, modalPost: post})
    }
 
 
    render() {
      return(
-       <div >
+       <div>
          <TopMenu />
          <Container className="content-container" fluid={true}>
            <Masonry
                 className={"grid"}
                 options={masonryOptions} >
-                {this.getColumns()}
+                {
+                  this.getColumns()
+                }
             </Masonry>
          </Container>
          <Footer />
-         <GalleryModal items={this.getImages()} isOpen={this.state.isModalOpen} toggle={this.toggleModal} />
+         <GalleryModal post={this.state.modalPost} isOpen={this.state.isModalOpen} toggle={this.toggleModal} />
        </div>
      );
    }
  }
 
+ function mapStateToProps(state){
+   return {
+     posts: state.tumblr.posts,
+     loading: state.tumblr.loading
+   }
+ }
 
 
- export default Gallery;
+ export default connect(mapStateToProps, { fetchPosts })(Gallery);

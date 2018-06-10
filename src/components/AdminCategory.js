@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row } from 'reactstrap';
+import { Col, Row, CardImgOverlay, CardImg, Card, CardText, CardTitle, Button } from 'reactstrap';
 
 export default function(props){
 
@@ -8,7 +8,14 @@ export default function(props){
     return imageGroups.map(group => {
         const image = require("../media/photos/" + group.front);
         return (
-            <img src={image} className="w-100 border-primary border-left border-right" />
+          <Card>
+            <CardImg src={image} className="w-100 border-primary border-left border-right" />
+            <CardImgOverlay>
+              <Row className="h-100">
+                  <Button className="m-auto px-4" outline color="primary">Edit</Button>
+              </Row>
+            </CardImgOverlay>
+          </Card>
         );
     });
   }

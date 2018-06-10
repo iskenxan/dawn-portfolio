@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import Routes from './routes';
-import { connect } from 'react-redux';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
-        <Routes {...this.props} />
+        <Routes />
     );
   }
 }
 
-function mapStateToProps(state) {
-  return{
-    loggedIn: state.session.loggedIn
-  }
-}
-
-export default connect(mapStateToProps)(App);
+export default (App);

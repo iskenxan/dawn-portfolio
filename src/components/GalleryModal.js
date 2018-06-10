@@ -8,21 +8,28 @@ class GalleryModal extends Component {
     return(
       <button
         className="close"
-        style={{ position: 'absolute', top: '25px', right: '25px' }}
+        style={{ marginTop:"25px", marginRight:"10px"}}
         onClick={this.props.toggle}>&times;</button>
       );
   }
 
+  getItemsSrc = () => {
+    return this.props.post.photos.map(photo => {
+      return photo.original_size.url;
+    });
+  }
+
 
   render() {
+    if(!this.props.post || !this.props.post.photos){
+      return null;
+    }
     return (
-      <Container>
-        <Modal isOpen={this.props.isOpen} className="p-0" toggle={this.props.toggle} external={this.closeButton()}>
+        <Modal isOpen={this.props.isOpen} backdropClassName="gallery-backdrop" className="p-0" toggle={this.props.toggle} external={this.closeButton()}>
           <ModalBody className="p-0">
-            <GalleryCarousel items={this.props.items} />
+            <GalleryCarousel items={this.getItemsSrc()} />
           </ModalBody>
         </Modal>
-      </Container>
     );
   }
 

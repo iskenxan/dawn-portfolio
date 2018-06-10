@@ -6,6 +6,7 @@ import { routes, galleryRoutes } from '../routes';
 import _ from 'lodash';
 import  Headroom  from 'react-headroom';
 
+
 import {
   Navbar,
   NavbarBrand,
@@ -34,8 +35,8 @@ class TopMenu extends Component {
     this.setState({isCollapseOpen: !this.state.isCollapseOpen});
   }
 
-  onNavLink = (route) => {
-    this.props.history.push(route.path);
+  onNavLink = (path) => {
+    this.props.history.push(path);
   }
 
   onDropDownToggle = () => {
@@ -45,7 +46,7 @@ class TopMenu extends Component {
   getGalleryMenuItems = () => {
     return _.map(galleryRoutes, route => {
       return(
-         <DropdownItem key={route.displayName} onClick={()=>this.onNavLink(route)}>{route.displayName}</DropdownItem>
+         <DropdownItem key={route.displayName} onClick={()=>this.onNavLink(route.path)}>{route.displayName}</DropdownItem>
       );
     });
   }
@@ -73,7 +74,7 @@ class TopMenu extends Component {
         <NavItem key={route.displayName}
           active={active}
           className="mx-sm-4">
-          <NavLink onClick={() => this.onNavLink(route)} href="#">{route.displayName}</NavLink>
+          <NavLink onClick={() => this.onNavLink(route.path)} href="#">{route.displayName}</NavLink>
         </NavItem>
       );
     });
@@ -84,7 +85,7 @@ class TopMenu extends Component {
     return (
       <Headroom upTolerance={100}>
         <Navbar light className="shadow-sm" expand="sm">
-          <NavbarBrand href="/"><img src={Logo} className="logo img-responsive p-1"/></NavbarBrand>
+          <NavbarBrand onClick={() => this.onNavLink("/gallery")}><img src={Logo} className="logo img-responsive p-1"/></NavbarBrand>
           <NavbarToggler onClick={this.onTogglerClick} />
           <Collapse isOpen={this.state.isCollapseOpen} navbar>
             <Nav className="ml-auto my-nav" navbar>

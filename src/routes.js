@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Gallery from './scenes/Gallery';
 import About from './scenes/About';
 import Contact from './scenes/Contact';
-import Admin from './scenes/Admin';
 import PrivateRoute from './components/PrivateRoute'
 import Login from './scenes/Login'
 import Error from './scenes/Error';
+import Landing from './scenes/Landing';
 
 
 export const galleryRoutes = {
@@ -19,8 +19,8 @@ export const galleryRoutes = {
     displayName: "portraits"
   },
   advertisement: {
-    path: "/gallery/advertisement",
-    displayName: "advertisement"
+    path: "/gallery/still-life",
+    displayName: "still life"
   }
 }
 
@@ -45,8 +45,8 @@ export default function(props) {
           <Route path={routes.about.path} component={About} />
           <Route path="/login" component={Login} />
           <Route path="/error" component={Error} />
-          <PrivateRoute path="/admin" renderComponent={Admin} {...props} />
-          <Route path="/" component={Gallery} />
+          <Route path="/gallery" component={Gallery}  />
+          <Route path="/" component={Landing}  />
         </Switch>
       </Router>
     </div>
