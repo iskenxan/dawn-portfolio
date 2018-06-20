@@ -1,0 +1,44 @@
+#root.landing {
+  height: 100% !important;
+}
+
+body.landing {
+  height: 100vh;
+}
+
+body.landing {
+  margin-bottom: 0px !important;
+}
+
+.landing-bg {
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.landing-overlay {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: rgba(15, 15, 15, 0.2);
+}
+
+.landing-icon {
+  height:150px;
+  width:150px;
+  cursor:pointer;
+}
+
+main , .frame, .track  {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top:0;
+  z-index: -2;
+  left: 0;
+}

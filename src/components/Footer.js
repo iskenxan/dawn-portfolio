@@ -4,6 +4,14 @@ import { Container, Row, Col } from 'reactstrap';
 
 class Footer extends Component {
 
+  componentWillMount() {
+    document.body.classList.add("gallery");
+  }
+
+  componentWillUnmount() {
+  }
+
+
   render() {
     return (
       <Container className="footer" fluid>

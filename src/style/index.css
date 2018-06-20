@@ -7,8 +7,8 @@ html {
   min-height: 100%; /* Needed for sticky footer */
 }
 
-body {
-  margin-bottom: 150px !important; /* Margin bottom by footer height */
+body.gallery {
+  margin-bottom: 150px !important;
 }
 
 .content-container {
@@ -86,14 +86,34 @@ body {
 }
 
 .gallery-backdrop.modal-backdrop {
-    opacity:1 !important;
+    opacity: 1 !important;
     background-color: #fff !important;
 }
 
 .abcRioButton {
-  width:100% !important;
+  width: 100% !important;
 }
 
 .screen-height {
-  height:100vh;
+  height: 100vh;
+}
+
+.modal-content {
+  border: 0px;
+}
+
+.loader-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: "rgb(255, 255, 255)";
+}
+
+p.about-me {
+  line-height: 2;
+}
+.about-me-social-container {
+  margin-top: 80px;
 }

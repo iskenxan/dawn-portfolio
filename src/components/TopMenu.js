@@ -36,6 +36,7 @@ class TopMenu extends Component {
   }
 
   onNavLink = (path) => {
+    this.onTogglerClick();
     this.props.history.push(path);
   }
 

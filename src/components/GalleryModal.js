@@ -25,7 +25,7 @@ class GalleryModal extends Component {
       return null;
     }
     return (
-        <Modal isOpen={this.props.isOpen} backdropClassName="gallery-backdrop" className="p-0" toggle={this.props.toggle} external={this.closeButton()}>
+        <Modal  isOpen={this.props.isOpen} backdropClassName="gallery-backdrop" className="p-0 shadow-sm" toggle={this.props.toggle} external={this.closeButton()}>
           <ModalBody className="p-0">
             <GalleryCarousel items={this.getItemsSrc()} />
           </ModalBody>

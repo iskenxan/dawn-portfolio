@@ -7,7 +7,8 @@
  import { connect } from 'react-redux';
  import { fetchPosts } from '../actions/ActionTumblr';
  import { getTag } from '../utils/Util';
-
+ import Loading from '../components/Loading';
+ import '../style/index.css';
 
  const masonryOptions = {
    percentPosition: true
@@ -20,9 +21,6 @@
        isModalOpen: false,
        modalPost: null
      };
-   }
-
-   componentDidMount() {
    }
 
    loadPosts = () => {
@@ -72,10 +70,16 @@
 
 
    render() {
+     const tag = this.getCurrentTag();
+     console.log(this.props.loading[tag])
+     if(this.props.loading[tag]) {
+       return (<Loading />);
+     }
+
      return(
        <div>
          <TopMenu />
-         <Container className="content-container" fluid={true}>
+         <Container className="content-container" fluid>
            <Masonry
                 className={"grid"}
                 options={masonryOptions} >

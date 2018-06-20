@@ -8,7 +8,6 @@ import Login from './scenes/Login'
 import Error from './scenes/Error';
 import Landing from './scenes/Landing';
 
-
 export const galleryRoutes = {
   fashion: {
     path: "/gallery/fashion",
@@ -38,7 +37,6 @@ export const routes = {
 
 export default function(props) {
   return(
-    <div>
       <Router>
         <Switch>
           <Route path={routes.contact.path} component={Contact} />
@@ -49,6 +47,5 @@ export default function(props) {
           <Route path="/" component={Landing}  />
         </Switch>
       </Router>
-    </div>
   );
 }
