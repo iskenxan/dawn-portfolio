@@ -17,7 +17,8 @@ class Footer extends Component {
       <Container className="footer" fluid>
         <Row>
           <Col className="my-auto">
-            <p >&copy; Ashley Dawn Samatova 2018</p>
+            <p>&copy; Ashley Dawn Samatova 2018</p>
+            <a target="_blank" href="https://www.linkedin.com/in/iskander-samatov-026029107/"><p className="text-muted text-monospace created-by">Created by Iskander Samatov</p></a>
           </Col>
         </Row>
       </Container>

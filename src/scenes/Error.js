@@ -20,7 +20,6 @@ class Error extends Component {
       </Container>
     )
   }
-
 }
 
 export default withRouter(Error);

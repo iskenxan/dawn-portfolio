@@ -99,7 +99,11 @@ body.gallery {
 }
 
 .modal-content {
-  border: 0px;
+  border: 0;
+}
+
+.modal-dialog {
+    max-width: 600px !important;
 }
 
 .loader-container {
@@ -108,7 +112,7 @@ body.gallery {
   height: 100%;
   top: 0;
   left: 0;
-  background: "rgb(255, 255, 255)";
+  background: rgb(255, 255, 255);
 }
 
 p.about-me {
@@ -116,4 +120,8 @@ p.about-me {
 }
 .about-me-social-container {
   margin-top: 80px;
+}
+
+p.created-by {
+  font-size: 10px;
 }

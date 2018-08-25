@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Modal, ModalBody } from 'reactstrap';
+import { Modal, ModalBody } from 'reactstrap';
 import GalleryCarousel from './GalleryCarousel';
 
 class GalleryModal extends Component {
@@ -11,17 +11,17 @@ class GalleryModal extends Component {
         style={{ marginTop:"25px", marginRight:"10px"}}
         onClick={this.props.toggle}>&times;</button>
       );
-  }
+  };
 
   getItemsSrc = () => {
     return this.props.post.photos.map(photo => {
       return photo.original_size.url;
     });
-  }
+  };
 
 
   render() {
-    if(!this.props.post || !this.props.post.photos){
+    if (!this.props.post || !this.props.post.photos) {
       return null;
     }
     return (

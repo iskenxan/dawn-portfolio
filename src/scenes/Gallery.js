@@ -12,7 +12,7 @@
 
  const masonryOptions = {
    percentPosition: true
- }
+ };
 
  class Gallery extends Component {
    constructor(props) {
@@ -31,15 +31,13 @@
      }
 
      return currentPosts;
-   }
+   };
 
 
    getCurrentTag = () => {
      const { pathname } = this.props.location;
-     const tag = getTag(pathname);
-
-     return tag;
-   }
+     return getTag(pathname);
+   };
 
 
    getColumns = () => {
@@ -54,7 +52,7 @@
          </Card>
        );
      });
-   }
+   };
 
    getOverlay = (post) => {
        return (
@@ -62,16 +60,15 @@
            <CardText className="m-auto">{post.summary}</CardText>
          </CardImgOverlay>
        );
-    }
+    };
 
    toggleModal = (post) => {
      this.setState({isModalOpen: !this.state.isModalOpen, modalPost: post})
-   }
+   };
 
 
    render() {
      const tag = this.getCurrentTag();
-     console.log(this.props.loading[tag])
      if(this.props.loading[tag]) {
        return (<Loading />);
      }

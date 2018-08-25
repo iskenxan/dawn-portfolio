@@ -6,7 +6,7 @@ class Loading extends Component {
 
   render() {
     return (
-      <Row className="loader-container align-items-center">
+      <Row style={{marginLeft: 0}} className="loader-container align-items-center">
         <div className="mx-auto">
           <BeatLoader
             color={'rgb(62, 62, 62)'}

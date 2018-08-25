@@ -46,7 +46,7 @@ function requestPosts(tag, offset, totalPosts, onPostFetchFinish){
     const { blog, posts } = data.data.response;
     totalPosts = [...totalPosts, ...posts];
     if (offset <= blog.posts) {
-      offset = offset + 19;
+      offset = offset + 20;
       requestPosts(tag,offset,totalPosts, onPostFetchFinish)
     } else {
       onPostFetchFinish(totalPosts);

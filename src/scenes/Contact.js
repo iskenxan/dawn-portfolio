@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TopMenu from '../components/TopMenu';
 import Footer from '../components/Footer';
 import { Field, reduxForm } from 'redux-form';
+import { withRouter } from 'react-router-dom';
 import {
   Container,
   Button,
@@ -13,17 +14,27 @@ import {
   Col,
   Card,
   CardBody,
-  CardHeader
+  CardHeader,
+  Alert,
+  Row
 } from 'reactstrap';
 import { sendForm } from '../utils/API';
 
 class Contact extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      isSent: false
+    };
+  }
 
   onSubmit = (values) => {
     if (!values.prefer) {
       values.prefer = "phone"
     }
     sendForm(values);
+    this.setState({ isSent: true})
   }
 
   renderRadioButtons = (field) => {
@@ -88,48 +99,76 @@ class Contact extends Component {
   }
 
 
-  render() {
+  renderForm = () => {
     const { handleSubmit } = this.props;
     return (
-      <div className="bg-light">
+      <Card className="mx-4">
+        <CardHeader className="text-secondary">email: ashley.gregory8594@gmail.com</CardHeader>
+        <CardBody>
+          <Form onSubmit={handleSubmit(this.onSubmit)}>
+            <Field
+              label="Name"
+              name="name"
+              placeholder="your name..."
+              type="text"
+              component={this.renderInput}/>
+            <Field
+              label="Email"
+              name="email"
+              placeholder="your email..."
+              type="email"
+              component={this.renderInput}/>
+            <Field
+              label="Phone"
+              name="phone"
+              placeholder="your phone number..."
+              type="number"
+              component={this.renderInput}/>
+              {this.renderRadioButtons()}
+            <Field
+              label="Message"
+              name="message"
+              placeholder="How can I help you?"
+              type="textarea"
+              component={this.renderInput}/>
+             <FormGroup>
+               <hr className="w-100"/>
+               <Button color="secondary">Submit</Button>
+             </FormGroup>
+          </Form>
+        </CardBody>
+      </Card>
+    );
+  }
+
+
+  onGalleryButtonClick = () => {
+    this.props.history.push("/gallery");
+  }
+
+
+  renderSentMessage = () => {
+    return(
+      <div>
+        <Row>
+          <Alert color="info" className="text-center w-75 mx-auto">Thank you! Your form was submitted.</Alert>
+        </Row>
+        <Row>
+          <Button onClick={this.onGalleryButtonClick} className="mx-auto">Back to Gallery</Button>
+        </Row>
+      </div>
+    )
+  }
+
+
+  render() {
+    const content = this.state.isSent ? this.renderSentMessage() : this.renderForm();
+    const containerClass = this.state.isSent ? "" : "bg-light";
+    return (
+      <div className={containerClass}>
         <TopMenu />
         <Container className="content-container" fluid>
-          <Card className="mx-4">
-            <CardHeader className="text-secondary">email: ashley.gregory8594@gmail.com</CardHeader>
-            <CardBody>
-              <Form onSubmit={handleSubmit(this.onSubmit)}>
-                <Field
-                  label="Name"
-                  name="name"
-                  placeholder="your name..."
-                  type="text"
-                  component={this.renderInput}/>
-                <Field
-                  label="Email"
-                  name="email"
-                  placeholder="your email..."
-                  type="email"
-                  component={this.renderInput}/>
-                <Field
-                  label="Phone"
-                  name="phone"
-                  placeholder="your phone number..."
-                  type="number"
-                  component={this.renderInput}/>
-                  {this.renderRadioButtons()}
-                <Field
-                  label="Message"
-                  name="message"
-                  placeholder="How can I help you?"
-                  type="textarea"
-                  component={this.renderInput}/>
-                 <FormGroup>
-                   <hr className="w-100"/>
-                   <Button color="secondary">Submit</Button>
-                 </FormGroup>
-              </Form>
-            </CardBody>
-          </Card>
+          {content}
         </Container>
         <Footer />
       </div>
@@ -155,7 +194,7 @@ function validate(values) {
   return errors;
 }
 
-export default reduxForm({
+export default withRouter(reduxForm({
   validate,
   form: 'contact'
-})(Contact);
+})(Contact));

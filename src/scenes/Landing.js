@@ -6,7 +6,6 @@ import '../style/landing.css';
 import Icon from '../media/logo_white.svg';
 import { Row, Button } from 'reactstrap';
 import { ViewPager, Frame, Track, View } from 'react-view-pager'
-import { getRandomInt } from '../utils/Util';
 import Loading from '../components/Loading';
 import _ from 'lodash';
 const tag = 'front-page';
@@ -18,7 +17,9 @@ class Landing extends Component {
     this.getPosts();
     this.state = {
       currentPost: 0,
-      timer: null
+      timer: null,
+      loadFinished: false,
+      imagesLoaded: 0,
     }
   }
 
@@ -42,36 +43,39 @@ class Landing extends Component {
     if (nextPost >= this.props.urls.length - 1){
       nextPost = 0;
     }
-    this.setState({currentPost: nextPost});
-  }
+    this.setState({ currentPost: nextPost });
+  };
 
 
   getPosts = () => {
-    const { posts, loading } = this.props;
-    if(posts.length <= 0 && !this.props.loading) {
+    const { posts } = this.props;
+    if (posts.length <= 0 && !this.props.loading) {
       this.props.fetchPosts("front-page");
     }
-  }
-
-
-  getBackgroundStyle = (image) => {
-    return {
-      backgroundImage: `url(${image})`
-    }
-  }
+  };
 
   takeToGallery = () => {
     this.props.history.push("/gallery");
-  }
+  };
+
+  onImageLoaded = () => {
+    console.log(this.state.imagesLoaded);
+    if (this.state.imagesLoaded + 1 >= this.props.posts.length) {
+      this.setState({ loadFinished:true });
+    }
+    this.setState({imagesLoaded: this.state.imagesLoaded + 1});
+  };
 
   getViews = () => {
     const images = this.props.urls;
     return images.map(image => {
       return (
-        <View style = {this.getBackgroundStyle(image)} className="landing-bg"></View>
+        <View key={image} className="landing-bg">
+          <img src={image} className="landing-bg landing-img" onLoad={this.onImageLoaded}/>
+        </View>
       );
     });
-  }
+  };
 
   getSlideShow = () => {
     return (
@@ -88,15 +92,14 @@ class Landing extends Component {
         </Frame>
     </ViewPager>
     )
-  }
+  };
 
   render() {
-    if(this.props.posts.length <= 0){
-      return (<Loading />)
-    }
-    const slideShow = this.getSlideShow();
+    const loading = this.state.loadFinished ? null : <Loading />;
+    const slideShow = this.props.urls.length > 0 ? this.getSlideShow(): null;
     return (
       <div className="w-100 h-100">
+        {loading}
         <div className="h-100 d-flex">
           <div className="m-auto flex-row">
             <Row>
@@ -108,7 +111,7 @@ class Landing extends Component {
           </div>
         </div>
         {slideShow}
-        <div className="landing-overlay"></div>
+        <div className="landing-overlay"/>
       </div>
     );
   }

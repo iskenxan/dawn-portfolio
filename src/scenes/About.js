@@ -3,19 +3,20 @@ import { Container, Row, Col } from 'reactstrap';
 import TopMenu from '../components/TopMenu';
 import Footer from '../components/Footer';
 import AboutMePhoto from '../media/about_me.jpg';
+import {FacebookLink, TumblrLink } from "../utils/Data";
 
 const iconBase = {
-    height:30,
+    height: 30,
     display: "inline-block",
     cursor: "pointer"
-  }
+  };
 
 
 const styles = {
   facebook: {
     ...iconBase,
     width: 17,
-    height:33
+    height: 33
   },
   tumblr: {
     ...iconBase,
@@ -25,7 +26,7 @@ const styles = {
     ...iconBase,
     width: 28
   }
-}
+};
 
 class About extends Component {
 
@@ -59,13 +60,19 @@ class About extends Component {
             <Col xs={6}>
               <Row>
                 <Col className="text-center">
-                  <div style={styles.facebook} className="social-icons icon-facebook" />
+                  <a target="_blank" href={FacebookLink}>
+                      <div style={styles.facebook} className="social-icons icon-facebook"/>
+                    </a>
                 </Col>
                 <Col className="text-center">
+                  <a target="_blank" href={TumblrLink}>
                   <div style={styles.tumblr} className="social-icons icon-tumblr" />
+                  </a>
                 </Col>
                 <Col className="text-center">
+                  <a target="_blank" >
                   <div style={styles.instragram} className="social-icons icon-insta" />
+                  </a>
                 </Col>
               </Row>
             </Col>

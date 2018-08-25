@@ -7,15 +7,17 @@ body.landing {
 }
 
 body.landing {
-  margin-bottom: 0px !important;
+  margin-bottom: 0 !important;
 }
 
 .landing-bg {
   height: 100%;
   width: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+}
+
+.landing-img {
+  object-fit: cover;
+  object-position: 50% 10%;
 }
 
 .landing-overlay {

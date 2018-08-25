@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Gallery from './scenes/Gallery';
 import About from './scenes/About';
 import Contact from './scenes/Contact';
-import PrivateRoute from './components/PrivateRoute'
 import Login from './scenes/Login'
 import Error from './scenes/Error';
 import Landing from './scenes/Landing';
@@ -21,7 +20,7 @@ export const galleryRoutes = {
     path: "/gallery/still-life",
     displayName: "still life"
   }
-}
+};
 
 export const routes = {
   about: {
@@ -32,7 +31,7 @@ export const routes = {
     path: "/contact",
     displayName: "contact"
   }
-}
+};
 
 
 export default function(props) {
