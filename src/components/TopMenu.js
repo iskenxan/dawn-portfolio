@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { routes, galleryRoutes } from '../routes';
 import _ from 'lodash';
 import  Headroom  from 'react-headroom';
-import { FacebookLink, TumblrLink } from '../utils/Data';
+import { FacebookLink, TumblrLink, InstagramLink } from '../utils/Data';
 
 import {
   Navbar,
@@ -95,7 +95,7 @@ class TopMenu extends Component {
               <NavItem className="mx-sm-4 d-none d-md-flex"><img src={Separator} className="menu-separator"/></NavItem>
               <Nav className="d-none d-md-flex">
                 <NavItem className="mx-sm-2 row"><NavLink className="col my-auto" target="_blank" href={FacebookLink}><div className="social-icons icon-facebook" /></NavLink></NavItem>
-                <NavItem className="mx-sm-2 row"><NavLink className="col my-auto" href="#"><div className="social-icons icon-insta" /></NavLink></NavItem>
+                <NavItem className="mx-sm-2 row"><NavLink className="col my-auto" href={InstagramLink}><div className="social-icons icon-insta" /></NavLink></NavItem>
                 <NavItem className="mx-sm-2 row"><NavLink  className="col my-auto" target="_blank" href={TumblrLink}><div className="social-icons icon-tumblr" /></NavLink></NavItem>
               </Nav>
             </Nav>

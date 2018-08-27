@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 import TopMenu from '../components/TopMenu';
 import Footer from '../components/Footer';
 import AboutMePhoto from '../media/about_me.jpg';
-import {FacebookLink, TumblrLink } from "../utils/Data";
+import {FacebookLink, TumblrLink, InstagramLink } from "../utils/Data";
 
 const iconBase = {
     height: 30,
@@ -70,7 +70,7 @@ class About extends Component {
                   </a>
                 </Col>
                 <Col className="text-center">
-                  <a target="_blank" >
+                  <a target="_blank" href={InstagramLink} >
                   <div style={styles.instragram} className="social-icons icon-insta" />
                   </a>
                 </Col>
